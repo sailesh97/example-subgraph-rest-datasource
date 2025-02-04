@@ -1,0 +1,31 @@
+# noinspection GraphQLTypeRedefinition
+
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.9", import: ["@key"])
+
+type Query {
+  allPosts: [Post]
+  allUsers: [User]
+  allComments: [Comment]
+}
+
+type User {
+  id: ID!
+  email: String!
+  name: String!
+  username: String
+}
+
+type Post {
+  id: ID!
+  title: String!
+  body: String
+  user: User
+}
+
+type Comment {
+  id: ID!
+  name: String!
+  body: String
+  post: Post
+}

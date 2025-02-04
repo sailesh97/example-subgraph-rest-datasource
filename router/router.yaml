@@ -1,0 +1,10 @@
+# $schema: configuration_schema.json
+
+headers:
+  all:
+    request:
+      - propagate:
+          matching: "^*"
+
+include_subgraph_errors:
+  all: true
