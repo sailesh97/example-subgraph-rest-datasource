@@ -1,6 +1,14 @@
 federation_version: =2.9.0
 subgraphs:
-  subgraph:
-    routing_url: http://localhost:4001
+  comments:
+    routing_url: http://localhost:4001/comments/graphql
     schema:
-      file: ../subgraph/src/schema.graphql
+      file: ../subgraphs/comments/schema.graphql
+  posts:
+    routing_url: http://localhost:4001/posts/graphql
+    schema:
+      file: ../subgraphs/posts/schema.graphql
+  users:
+    routing_url: http://localhost:4001/users/graphql
+    schema:
+      file: ../subgraphs/users/schema.graphql

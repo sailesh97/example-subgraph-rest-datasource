@@ -3,10 +3,10 @@
 This repository demonstrates how to use [RESTDataSource](https://github.com/apollographql/datasource-rest) in an Apollo Server v4 subgraph and make the data available via the Router.
 
 ## Running the Example
-- Start subgraph in the `/subgraph` directory
+- Start all the subgraphs in the `/subgraphs` directory
   - Install dependencies with `npm install`
-  - Start server with `npm run dev`
-  - Subgraph should be running at http://localhost:4001/
+  - Start the server and endpoints with `npm start`
+  - Subgraph should be running at `http://localhost:4001/{subgraph}/graphql`
 - Start Apollo Router in the `/router` directory
   - Download the router by running `./download_router.sh`
   - Compose the schema by running `./create_local_schema.sh`

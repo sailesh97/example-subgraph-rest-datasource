@@ -22,11 +22,11 @@ directive @join__unionMember(graph: join__Graph!, member: String!) repeatable on
 directive @link(url: String, as: String, for: link__Purpose, import: [link__Import]) repeatable on SCHEMA
 
 type Comment
-  @join__type(graph: SUBGRAPH)
+  @join__type(graph: COMMENTS, key: "id")
 {
   id: ID!
   name: String!
-  body: String
+  username: String
   post: Post
 }
 
@@ -44,7 +44,9 @@ scalar join__FieldSet
 scalar join__FieldValue
 
 enum join__Graph {
-  SUBGRAPH @join__graph(name: "subgraph", url: "http://localhost:4001")
+  COMMENTS @join__graph(name: "comments", url: "http://localhost:4001/comments/graphql")
+  POSTS @join__graph(name: "posts", url: "http://localhost:4001/posts/graphql")
+  USERS @join__graph(name: "users", url: "http://localhost:4001/users/graphql")
 }
 
 scalar link__Import
@@ -62,27 +64,31 @@ enum link__Purpose {
 }
 
 type Post
-  @join__type(graph: SUBGRAPH)
+  @join__type(graph: COMMENTS, key: "id", resolvable: false)
+  @join__type(graph: POSTS, key: "id")
 {
   id: ID!
-  title: String!
-  body: String
-  user: User
+  title: String! @join__field(graph: POSTS)
+  body: String! @join__field(graph: POSTS)
+  user: User @join__field(graph: POSTS)
 }
 
 type Query
-  @join__type(graph: SUBGRAPH)
+  @join__type(graph: COMMENTS)
+  @join__type(graph: POSTS)
+  @join__type(graph: USERS)
 {
-  allPosts: [Post]
-  allUsers: [User]
-  allComments: [Comment]
+  allComments: [Comment] @join__field(graph: COMMENTS)
+  allPosts: [Post] @join__field(graph: POSTS)
+  allUsers: [User] @join__field(graph: USERS)
 }
 
 type User
-  @join__type(graph: SUBGRAPH)
+  @join__type(graph: POSTS, key: "id", resolvable: false)
+  @join__type(graph: USERS, key: "id")
 {
   id: ID!
-  email: String!
-  name: String!
-  username: String
+  email: String! @join__field(graph: USERS)
+  name: String! @join__field(graph: USERS)
+  username: String @join__field(graph: USERS)
 }
