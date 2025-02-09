@@ -11,8 +11,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@apollo/datasource-rest": "^6.4.1",
-    "@apollo/server": "^4.11.3",
+    "@apollo/datasource-rest": "github:sailesh97/apollo-server-debug#main",
+    "@apollo/server": "github:sailesh97/apollo-server-debug#main",
     "@apollo/subgraph": "^2.9.3",
     "@apollo/utils.keyvaluecache": "^3.1.0",
     "body-parser": "^1.20.3",
