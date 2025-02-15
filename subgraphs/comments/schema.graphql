@@ -3,8 +3,19 @@
 extend schema
   @link(url: "https://specs.apollo.dev/federation/v2.9", import: ["@key"])
 
+enum CacheControlScope {
+  PUBLIC
+  PRIVATE
+}
+
+directive @cacheControl(
+  maxAge: Int
+  scope: CacheControlScope
+  inheritMaxAge: Boolean
+) on FIELD_DEFINITION | OBJECT | INTERFACE | UNION
+
 type Query {
-  allComments: [Comment]
+  allComments: [Comment] @cacheControl(maxAge: 3000)
 }
 
 type Comment @key(fields: "id") {

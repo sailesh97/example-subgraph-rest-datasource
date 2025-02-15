@@ -10,6 +10,7 @@ import { addMocksToSchema } from '@graphql-tools/mock';
 import { getUsersSchema, getUsersDataSources } from './users/subgraph.js';
 import { getCommentsDataSources, getCommentsSchema } from './comments/subgraph.js';
 import { getPostsDataSources, getPostsSchema } from './posts/subgraph.js';
+import responseCachePlugin from '@apollo/server-plugin-response-cache';
 
 /**
  * This is a handy way to run a bunch of subgraphs in a monolith.
@@ -65,7 +66,8 @@ export const startSubgraphs = async (httpPort) => {
             introspection: true,
             plugins: [
                 ApolloServerPluginDrainHttpServer({ httpServer }),
-                ApolloServerPluginUsageReportingDisabled()
+                ApolloServerPluginUsageReportingDisabled(),
+                responseCachePlugin()
             ]
         });
 
@@ -78,6 +80,7 @@ export const startSubgraphs = async (httpPort) => {
             bodyParser.json(),
             expressMiddleware(server, {
                 context: async ({ req }) => {
+                    console.log('\n\n\nserver.cache----', server.cache.cache);
                     return {
                         headers: req.headers,
                         dataSources: subgraphConfig.dataSources(),

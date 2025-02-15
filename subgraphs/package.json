@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "NODE_ENV=dev nodemon index.js"
+    "start": "cross-env NODE_ENV=dev nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,7 @@
   "dependencies": {
     "@apollo/datasource-rest": "^6.4.1",
     "@apollo/server": "^4.11.3",
+    "@apollo/server-plugin-response-cache": "^4.1.4",
     "@apollo/subgraph": "^2.9.3",
     "@apollo/utils.keyvaluecache": "^3.1.0",
     "body-parser": "^1.20.3",
