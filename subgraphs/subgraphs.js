@@ -63,7 +63,7 @@ export const startSubgraphs = async (httpPort) => {
         const server = new ApolloServer({
             schema,
             // For a real subgraph introspection should remain off, but for demo we enabled
-            introspection: true,
+            introspection: false,
             plugins: [
                 ApolloServerPluginDrainHttpServer({ httpServer }),
                 ApolloServerPluginUsageReportingDisabled(),

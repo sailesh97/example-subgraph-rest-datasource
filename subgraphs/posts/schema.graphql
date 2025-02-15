@@ -15,7 +15,7 @@ directive @cacheControl(
 
 type Query {
   allPosts: [Post] @cacheControl(maxAge:300),
-  
+
   pushPost(
     id: ID
     body: String
@@ -30,9 +30,9 @@ input UserInput{
 
 type Post @key(fields: "id") {
   id: ID!
-  title: String!
+  title: String! @cacheControl(maxAge:300)
   body: String!
-  user: User
+  user: User @cacheControl(maxAge:300)
 }
 
 type User @key(fields: "id", resolvable: false) {
