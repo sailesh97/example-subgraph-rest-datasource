@@ -1,0 +1,24 @@
+query PushPost($id:ID,
+$body: String,
+$title: String,
+$user: UserInput ) {
+  pushPost(
+    id: $id
+    body: $body
+    title: $title
+    user: $user
+  ) {
+    id
+    body
+    title
+    user {
+      id
+    }
+  }
+}
+Variables
+{{ "title": "foo",
+ "body": "bar", 
+ "user":{
+  "id":24
+ }, "id": 102 }}
