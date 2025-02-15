@@ -5,6 +5,7 @@ This repository demonstrates how to use [RESTDataSource](https://github.com/apol
 ## Running the Example
 - Start all the subgraphs in the `/subgraphs` directory
   - Install dependencies with `npm install`
+  - Replace `subgraphs\node_modules\@apollo\server-plugin-response-cache\dist\esm` with `subgraphs\debug\ApolloServerPluginResponseCache.js`
   - Start the server and endpoints with `npm start`
   - Subgraph should be running at `http://localhost:4001/{subgraph}/graphql`
 - Start Apollo Router in the `/router` directory
