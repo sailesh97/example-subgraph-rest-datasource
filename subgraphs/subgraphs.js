@@ -80,7 +80,7 @@ export const startSubgraphs = async (httpPort) => {
             bodyParser.json(),
             expressMiddleware(server, {
                 context: async ({ req }) => {
-                    // console.log('\n\n\nserver.cache----', server.cache.cache);
+                    console.log('\n\n\nserver.cache----', server?.cache?.cache?.valList);
                     return {
                         headers: req.headers,
                         dataSources: subgraphConfig.dataSources(),
