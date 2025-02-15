@@ -12,6 +12,10 @@ This repository demonstrates how to use [RESTDataSource](https://github.com/apol
   - Compose the schema by running `./create_local_schema.sh`
   - Run the router by running `./start_router.sh`
   - You can now open the Router at http://127.0.0.1:4000/ and start querying.
+- Start Basic UI example in the `/react-graphql` directory
+  - Install dependencies with `npm install`
+  - Start the server and endpoints with `npm start`
+  - UI should be running at `http://localhost:3000/`
 
 ## Example Queries
 
