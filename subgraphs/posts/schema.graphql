@@ -14,7 +14,8 @@ directive @cacheControl(
 ) on FIELD_DEFINITION | OBJECT | INTERFACE | UNION
 
 type Query {
-  allPosts: [Post],
+  allPosts: [Post] @cacheControl(maxAge:300),
+  
   pushPost(
     id: ID
     body: String

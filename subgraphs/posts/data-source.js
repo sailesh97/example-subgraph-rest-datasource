@@ -42,22 +42,14 @@ export class PostsAPI extends RESTDataSource {
 
     async pushPost(args, context){
         // console.log('args---',args)
-        const post = {
-           ...args,
-           userId: args.user.id
-        };
+    
         const response = await this.post(`posts`,{
-            body: JSON.stringify(post),
+            body: JSON.stringify(args),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         });
-        // console.log('response of pushing a post---', response);
-        return {
-            ...response,
-            user: {
-                id: response.id
-            }
-        };
+        // console.log('response of pushing a post---', response, context.cache);
+        return response;
     }
 }
