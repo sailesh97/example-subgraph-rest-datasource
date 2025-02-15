@@ -31,12 +31,14 @@ export class PostsAPI extends RESTDataSource {
     }
 
     async listPosts(context) {
-        const posts = await this.get(`posts`);
+        const posts = await this.get(`posts`,{
+            params:{userId:1}
+        });
         return posts.map(it => ({
             ...it,
             user: {
                 id: it.userId
-            }
+            },
         }));
     }
 
